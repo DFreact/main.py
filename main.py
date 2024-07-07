@@ -11,13 +11,12 @@ for i in numbers:
         elif i % j == 0 and i != j and j != 1:
             break
 
-    if flag:
+    if flag and i != 1:
         print("Число", i, "Простое")
         primes.append(i)
-    else:
+    elif not flag:
         print("Число", i, "Сложное")
         not_primes.append(i)
-
 
 print(primes)
 print(not_primes)
