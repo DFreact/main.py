@@ -1,22 +1,8 @@
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-primes = []
-not_primes = []
-for i in numbers:
-    flag = False
-
-    for j in numbers:
-        if i % j == 0 and i == j:
-            flag = True
-            break
-        elif i % j == 0 and i != j and j != 1:
-            break
-
-    if flag and i != 1:
-        print("Число", i, "Простое")
-        primes.append(i)
-    elif not flag:
-        print("Число", i, "Сложное")
-        not_primes.append(i)
-
-print(primes)
-print(not_primes)
+my_list = [42, 69, 322, 13, 0, 99, -5, 9, 8, 7, -6, 5]
+i = 0
+while i < len(my_list):
+    if my_list[i] < 0:
+        break
+    elif my_list[i] != 0:
+        print(my_list[i])
+    i += 1
