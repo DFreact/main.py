@@ -1,13 +1,25 @@
-def get_matrix(n, m, value):
-    matrix = []
-
-    for i in range(n):
-        matrix.append([])
-        for j in range(m):
-            matrix[i].append(value)
-            # value += 1
 
 
-    return matrix
+def password(number):
+    result = []
+    for i in range(1, number):
+        for j in range(1,number):
+            if number % (i+j) == 0 and i != j:
+                num = str(i) + str(j)
+                result.append(num)
 
-print(get_matrix(8,1,0))
+    for i_p in result:
+        for j_p in result:
+            if i_p == j_p:
+                continue
+            elif i_p == j_p[::-1]:
+                result.remove(j_p)
+
+    return result
+
+data = [x for x in range(3,21)]
+
+
+for i in data:
+
+    print(i, password(i))
