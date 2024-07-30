@@ -1,34 +1,29 @@
-data_structure = [
-  [1, 2, 3],
-  {'a': 4, 'b': 5},
-  (6, {'cube': 7, 'drum': 8}),
-  "Hello",
-  ((), [{(2, 'Urban', ('Urban2', 35))}])
-]
+def send_email(message, recipient, *, sender="university.help@gmail.com"):
+    ends_list = [".com", ".ru", ".net"]
+    recipient_ends = True
+    sender_ends = True
+    if "@" not in recipient or "@" not in sender:
+        print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}.")
 
 
-def calculate_structure_sum(data_structure):
-    total_sum = 0
-    if isinstance(data_structure, int):
-        return data_structure
-    for elem in data_structure:
+    for i in ends_list:
+        if recipient.endswith(i):
+            recipient_ends = False
 
-        if isinstance(elem, tuple):
-            total_sum += calculate_structure_sum(elem)
-        elif isinstance(elem, list):
-            total_sum += calculate_structure_sum(elem)
-        elif isinstance(elem, dict):
-            key, value = elem.keys(), elem.values()
-            total_sum += calculate_structure_sum(key)
-            total_sum += calculate_structure_sum(value)
-        elif isinstance(elem, int):
-            total_sum += elem
-        elif isinstance(elem, str):
-            total_sum += len(elem)
-        else:
-            total_sum += calculate_structure_sum(elem)
-    return total_sum
+        if sender.endswith(i):
+            sender_ends = False
 
 
-result = calculate_structure_sum(data_structure)
-print(result)
+    if recipient_ends or sender_ends:
+        return print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}.")
+    elif recipient == sender:
+        return print(f"Нельзя отправить письмо самому себе!")
+    elif sender == "university.help@gmail.com":
+        print(f"Письмо успешно отправлено с адреса {sender} на адрес {recipient}.")
+    else:
+        print(f"НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {recipient}.")
+
+send_email('Это сообщение для проверки связи', 'vasyok1337@gmail.com')
+send_email('Вы видите это сообщение как лучший студент курса!', 'urban.fan@mail.ru', sender='urban.info@gmail.com')
+send_email('Пожалуйста, исправьте задание', 'urban.student@mail.ru', sender='urban.teacher@mail.uk')
+send_email('Напоминаю самому себе о вебинаре', 'urban.teacher@mail.ru', sender='urban.teacher@mail.ru')
