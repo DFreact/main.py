@@ -23,9 +23,6 @@ class UrTube:
         self.videos = []  # Список видео
         self.current_user = None  # Текущий авторизованный пользователь
 
-    def __str__(self):
-        return str(2+2)
-
     def log_in(self, nickname, password):
         password_hash = int(hashlib.sha256(password.encode()).hexdigest(), 16)
         for user in self.users:
